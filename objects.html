@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Objects</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+  
+</body>
+<script type="text/javascript">
+// var me = {
+// 	name: 'Matt',
+// 	lastName: 'White',
+// 	location: 'Austin',
+// 	work: function(){
+// 		console.log('Everyday I am hustlin')
+// 	},
+// 	party: function(){
+
+// 		console.log('RAVE RAVE RAVE')
+// 	},
+// 	// The properties spouse and workout(fn) were created in the console
+// 	// me.spouse = "Chelsea",
+// 	// me.workout = function(){ console.log('today is arms' )}
+// };
+
+// //copy and pasted object from exercise
+// var car = {
+//   type: "Honda Civic",
+//   location: 1,
+//   speed: 35,
+//   move: function(){
+//     var prev = car.location;
+//     car.location = car.location + 1;
+//     console.log(car.type + " is moving from " + prev + " to " + car.location + " at " + car.speed + " MPH");
+//   }
+// };
+
+
+// //creating a dog object
+// var dog = {
+// 	name: 'Scout',
+// 	breed: 'Huskie',
+// 	location: 'on the couch',
+// 	food: 'Rachel Ray\'s beef kibble',
+// 	party: function(){
+// 		console.log( dog.name + 'is throwing a HUSKIE FIT');
+// 	},
+// 	eat: function(){
+// 		console.log(dog.name + " eats her " + dog.food)
+// 	}
+// };
+
+
+
+//copy and pasted object from excercise
+// var moveFn = function(){
+//   var prev = car.location;
+//   car.location = car.location + 1;
+//   console.log(car.type + " is moving from " + prev + " to " + car.location);
+// };
+
+// var car = {
+//   type: "Honda Civic",
+//   location: 1,
+//   move: moveFn
+// };
+// How will this change things? Test it out. Works the same as the other functions
+// Refactor your dog object so that it references free-standing functions
+
+//dog refactor
+// var partyFn = function(){
+// 		console.log( this.name + 'is throwing a HUSKIE FIT');
+// };
+
+// var eatFn = function(){
+// 	console.log(this.name + " eats " + this.food);
+
+// };
+
+// var dog1 = {
+// 	name: 'Scout',
+// 	breed: 'Huskie',
+// 	location: 'on the couch',
+// 	fodd: 'Rachel Ray\'s beef kibble',
+// 	party: partyFn,
+// 	eat: eatFn
+// };
+
+
+// play with this a bit, how does it work?
+// var car = {
+//   type: "Honda Civic",
+//   location: 1,
+//   move: function(){
+//     this.location++;
+//   }
+// };
+
+
+//rewriting the move function 
+// var moveFn = function(){
+//   this.loc++;
+//   console.log(this.loc + " " + "at " + this.speed + " MPH")
+// };
+
+// var car1 = {
+//   type: "Honda Civic",
+//   speed: 5,
+//   loc: 1,
+//   move: moveFn // does this still work? test it out.
+// };
+
+// var car2 = {
+//   type: "Toyota Corolla",
+//   speed: 3,
+//   loc: 6,
+//   move: moveFn // Does car2.move() change both cars' locations?
+// };
+// console.log the this keyword inside the move method. what is it?
+
+// 'this' retuns the Window object and its properties
+
+// dog refactor with this
+
+// var partyFn = function(){
+// 		console.log( this.name + 'is throwing a HUSKIE FIT');
+// };
+
+// var eatFn = function(){
+// 	console.log(this.name + " eats " + this.food);
+
+// };
+
+// var dog2 = {
+// 	name: 'Atticus',
+// 	breed: 'Rat Terrier',
+// 	location: 'in the bed',
+// 	food: 'Rachel Ray\'s beef kibble',
+// 	party: partyFn,
+// 	eat: eatFn
+// };
+
+// // cats
+// var meowFn = function(){
+// 	console.log(this.name + " says MEOW")
+// };
+
+// var cat1 = {
+// 	animal: 'cat',
+// 	name: 'Soju',
+// 	says: meowFn
+// };
+
+// var cat2 = {
+// 	animal: 'cat',
+// 	name: 'Sake',
+// 	says: meowFn
+// };
+
+//messing with the Decorator pattern
+
+// var reverseAdder = function(car){
+// 	car.reverse = function(){
+// 		this.location = this.location - this.speed;
+// 	};
+// };
+
+// //fetch (works with cats too)
+// var fetch = function(dog){
+// 	console.log(dog.name + " is getting the ball")
+// 	};
+
+// fetch(dog1)
+// fetch(dog2)
+// fetch(cat1)
+// fetch(cat2)
+
+// var napping = function(cat){
+// 	console.log(cat.name + " is napping ZZZZzzzzzz")
+// }
+
+// napping(cat1)
+// napping(cat2)
+// napping(dog1)
+// napping(dog2)
+
+
+//Factory Pattern
+// var carFactory = function (type, speed) {
+//   var car = {};
+
+//   car.location = 0;
+//   car.type = type;
+//   car.speed = speed;
+
+//   car.move = function () {
+//     this.location += this.speed;
+//   };
+
+//   return car;
+// };
+
+// var toyota = carFactory('Toyota Hilux', 3);
+// var honda = carFactory('Honda Accord', 5);
+
+// console.log(honda)
+// console.log(toyota)
+
+//warrior factory
+var warriorFactory = function(name, weapon){
+
+var warrior = {};
+
+warrior.name = name;
+warrior.weapon = weapon;
+
+warrior.attack = function(){
+	console.log(this.name + " strongly slashes with their " + this.weapon);
+};
+	return warrior;
+};
+
+var nightElf = warriorFactory('Kokyu', 'axe')
+var orc = warriorFactory('Gormosh', 'sword')
+
+
+
+
+
+
+</script>
+</html>
